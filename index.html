@@ -71,10 +71,10 @@
                 info.publicIP = data.ip;
                 console.log("IP fetched:", data.ip);
 
-                // Using a CORS proxy service to fetch geo data
+                // Using ipinfo.io for geo data
                 let geoResponse;
                 try {
-                    geoResponse = await fetch(`https://cors-anywhere.herokuapp.com/https://ipapi.co/${data.ip}/json/`);
+                    geoResponse = await fetch(`https://ipinfo.io/${data.ip}/json?token=6cd9d693118501`);
                     const geoData = await geoResponse.json();
                     info.isp = geoData.org || "Unknown ISP";
                     info.location = `${geoData.city || "Unknown"}, ${geoData.region || "Unknown"}, ${geoData.country || "Unknown"}`;
